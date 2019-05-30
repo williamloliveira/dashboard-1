@@ -1,3 +1,9 @@
 
 # pastas de cache do python
 __pycache__
+
+# pasta do virtual env
+env/
+
+# vscode settings
+.vscode/
