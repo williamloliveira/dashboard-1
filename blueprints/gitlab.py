@@ -6,12 +6,13 @@ ACCESS_TOKEN = 'm82eo7QN7HE2f1X7iUXa'
 
 PROJECTS_URL = 'http://localhost:8000/api/v4/projects?private_token={}'.format(ACCESS_TOKEN)
 
-r = requests.get(PROJECTS_URL)
-
-#print(r.json())
-#print('Id: ', r.id[0])
-
 COMMITS_URL = 'http://localhost:8000/api/v4/projects/1/repository/commits?private_token={}'.format(ACCESS_TOKEN)
+
+CREATE_PROJECT_URL = 'http://localhost:8000/api/v4/projects/user'
+
+r = requests.get(COMMITS_URL)
+
+print(r.status_code, r.json())
 
 blueprint = flask.Blueprint('gitlab', __name__)
 
