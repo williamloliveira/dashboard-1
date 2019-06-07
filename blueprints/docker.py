@@ -2,13 +2,19 @@
 import flask
 import docker
 
+import services.auth
+
 #connection = docker.DockerClient('tcp://0.0.0.0:2376')
 connection = docker.DockerClient()
 
 blueprint = flask.Blueprint('docker', __name__)
 
 @blueprint.route('/docker', methods=[ 'GET' ])
+@services.auth.login_required
 def get_docker():
+
+    if not flask.session.get('email'):
+        return flask.redirect('/sign-in')
 
     context = {
         'page': 'docker',
