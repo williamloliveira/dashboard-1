@@ -1,6 +1,7 @@
 
 import os
 import sys
+import logging
 
 import flask
 
@@ -9,6 +10,14 @@ import blueprints.jenkins
 import blueprints.gitlab
 import blueprints.sign_in
 import blueprints.sign_up
+
+logging.basicConfig(
+    filename = 'app.log',
+    level = logging.DEBUG,
+    format = '%(asctime)s [%{levelname}s] %(name)s ' +
+        '[%(funcName)s] [%(filename)s, %(lineo)s] %(message)s',
+    datefmt = '[%d/%m/%Y %H:%M:%S]' 
+)
 
 app = flask.Flask(__name__)
 

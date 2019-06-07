@@ -1,4 +1,6 @@
 
+import logging
+
 import flask
 import docker
 
@@ -20,6 +22,9 @@ def get_docker():
         'page': 'docker',
         'containers': connection.containers.list(all=True)
     }
+
+    email = flask.session.get('email')
+    logging.debug('{} acessou rota docker'.format(email))
 
     return flask.render_template('docker.html', context=context)
 

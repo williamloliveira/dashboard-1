@@ -64,3 +64,8 @@ def post_sign_in():
     flask.session['email'] = email
 
     return flask.redirect('/docker')
+
+@blueprint.route('/sign-out', methods=[ 'GET' ])
+def get_sign_out():
+    del flask.session['email']
+    return flask.redirect('/sign-in')
